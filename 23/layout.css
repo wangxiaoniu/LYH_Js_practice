@@ -1,0 +1,10 @@
+@charset"utf-8";
+
+#box{
+	width: 200px;
+	height: 200px;
+	background:lightgreen;
+	position:absolute;
+	left: 50px;
+	top:50px;
+}
