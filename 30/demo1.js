@@ -52,11 +52,16 @@ function createXMLDOM(){
 }
 
 
+// var xmlDom=createXMLDOM();
+// xmlDom.load('demo.xml');
+// var bbb=xmlDom.createElement('bbb');
+// var root= xmlDom.documentElement;
+// root.appendChild(bbb);
+// var bbbtext=xmlDom.createTextNode('kkk');
+// bbb.appendChild(bbbtext);
+// alert(xmlDom.xml);//xml序列化
 var xmlDom=createXMLDOM();
-xmlDom.load('demo.xml');
-var bbb=xmlDom.createElement('bbb');
-var root= xmlDom.documentElement;
-root.appendChild(bbb);
-var bbbtext=xmlDom.createTextNode('kkk');
-bbb.appendChild(bbbtext);
-alert(xmlDom.xml);//xml序列化
+xmlDom.loadXML('<root><user>wang</user></root>');
+//alert(xmlDom.xml); 
+var user =xmlDom.getElementsByTagName('user')[0];
+alert(user.firstChild.nodeValue);

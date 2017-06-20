@@ -28,11 +28,11 @@ if(errors.length == 0){
 function getXMLDOM(xmlStr){
 	var xmlDom =null;
 
-	if(typeof window.DOMParser != 'undefined'){
-		xmlDom=(new DOMParser()).parseFromString(xmlStr,'text/xml');
-		var errors=xmlDom.getElementsByTagName('parsererror');
-		if(errors.length>0){
-			throw new Error('XML 解析错误：'+errors[0].textContent);
+	if (typeof window.DOMParser != 'undefined') {
+		xmlDom = (new DOMParser).parseFromString(xmlStr, 'text/xml');
+		var errors = xmlDom.getElementsByTagName('parsererror');
+		if (errors.length > 0) {
+			throw new Error('错误信息：' + errors[0].textContent);
 		}
 	}else if(typeof window.ActiveXObject !="undefined"){
 		var version =[
@@ -40,20 +40,31 @@ function getXMLDOM(xmlStr){
 			'MSXML2.DOMDocument3.0',
 			'MSXML2.DOMDocument'
 		];
-		for(var i=0;i<version.length;i++){
+		for(var i=0; i<version.length; i++){
 			try{
+<<<<<<< HEAD
 			  var xmlDom=new ActiveXObject(version[i]);
+=======
+				var xmlDom=new ActiveXObject(version[i]);
+>>>>>>> 8078e6820ead9d4aebe2bc42889b4ace3c268bfa
 
 			}catch(e){
 				//跳过
 			}
 		}
 		xmlDom.loadXML(xmlStr);
+<<<<<<< HEAD
 		if(xmlDom.parseError != 0){
 			throw new Error('XML 解析错误：'+xmlDom.parseError.reason);
+=======
+
+
+		if (xmlDom.parseError != 0) {
+				throw new Error('错误信息：' + xmlDom.parseError.reason);
+>>>>>>> 8078e6820ead9d4aebe2bc42889b4ace3c268bfa
 		}
-	}
-	else{
+		return xmlDom;
+	}else{
 		throw new Error('您所使用的系统或浏览器不支持 XML DOM');
 
 	}
