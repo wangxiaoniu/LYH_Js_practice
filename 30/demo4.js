@@ -42,13 +42,13 @@ function getXMLDOM(xmlStr){
 		];
 		for(var i=0;i<version.length;i++){
 			try{
-				xmlDom=new ActiveObject(version[i]);
+			  var xmlDom=new ActiveXObject(version[i]);
 
 			}catch(e){
 				//跳过
 			}
 		}
-		xmlDom.loadXML(xmlSt);
+		xmlDom.loadXML(xmlStr);
 		if(xmlDom.parseError != 0){
 			throw new Error('XML 解析错误：'+xmlDom.parseError.reason);
 		}
